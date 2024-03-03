@@ -60,7 +60,7 @@ int main()
     printf("\nAfter append: \n");
     display(arr);
     insert(&arr, 2, 100);
-    printf("\n");
+    printf("\nafter insert:\n");
     display(arr);
     return 0;
 }
