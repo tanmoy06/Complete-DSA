@@ -8,12 +8,12 @@ void display(int a[], int size)
         printf("%d ", a[i]);
     }
 }
-void swap(int a, int b)
+void swap(int *a, int *b)
 {
     int temp;
-    temp = a;
-    a = b;
-    b = temp;
+    temp = *a;
+    *a = *b;
+    *b = temp;
 }
 void selectionsort(int arr[], int size)
 {
@@ -25,7 +25,7 @@ void selectionsort(int arr[], int size)
             if (arr[j] < arr[k])
             {
                 k = j;
-                swap(arr[i], arr[k]);
+                swap(&arr[i], &arr[k]);
             }
         }
 
