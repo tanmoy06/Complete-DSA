@@ -2,7 +2,7 @@
 void display(int arr[], int size)
 {
     int i;
-    printf("\nElements are:\n");
+    printf("Elements are:\n");
     for (i = 0; i < size; i++)
     {
         printf("%d ", arr[i]);
@@ -10,10 +10,10 @@ void display(int arr[], int size)
 }
 void bubblesort(int arr[], int size)
 {
-    int i, j;
+    int i, j, flag;
     for (i = 0; i < size - 1; i++)
     {
-        int flag = 0;
+        flag = 0;
         for (j = 0; j < size - 1 - i; j++)
         {
             if (arr[j] > arr[j + 1])
@@ -34,9 +34,9 @@ int main()
 {
     int a[] = {5, 4, 3, 2, 1};
     int len = sizeof(a) / sizeof(a[0]);
-    printf("Before sort: \n");
+    printf("Before sort: ");
     display(a, len);
     bubblesort(a, len);
-    printf("\nAfter sort: \n");
+    printf("\nAfter sort: ");
     display(a, len);
 }

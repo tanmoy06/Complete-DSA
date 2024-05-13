@@ -1,24 +1,15 @@
 #include <stdio.h>
-void display(int a[], int size)
+
+void swap(int *x, int *y)
 {
-    int i;
-    printf("\nElements are: \n");
-    for (i = 0; i < size; i++)
-    {
-        printf("%d ", a[i]);
-    }
+    int temp = *x;
+    *x = *y;
+    *y = temp;
 }
-void swap(int a, int b)
+int partition(float arr[], int low, int high)
 {
-    int temp;
-    temp = a;
-    a = b;
-    b = temp;
-}
-int partition(int arr[], int size)
-{
-    int i = 0, j = size - 1;
-    int pivot = arr[0];
+    float pivot = arr[low];
+    int i = low, j = high;
     do
     {
         do
@@ -31,27 +22,31 @@ int partition(int arr[], int size)
         } while (arr[j] > pivot);
         if (i < j)
         {
-            swap(arr[i], arr[j]);
+            swap(&arr[i], &arr[j]);
         }
+
     } while (i < j);
-    swap(pivot, arr[j]);
+    swap(&arr[low], &arr[j]);
     return j;
 }
-void quicksort(int arr[], int size)
+void quickSort(float a[], int low, int high)
 {
     int j;
-    partition(arr, size);
-    quicksort(arr, size);
-    quicksort(arr, size);
+    if (low < high)
+    {
+        j = partition(a, low, high);
+        quickSort(a, low, j - 1);
+        quickSort(a, j + 1, high);
+    }
 }
 int main()
 {
-    int arr[] = {12, 4, 7, 4, 7, -4, 6, 10, __INT_MAX__};
-    int size = sizeof(arr) / sizeof(arr[0]);
-    printf("Before sort:");
-    display(arr, size);
-    quicksort(arr, size);
-    printf("\nAfter sort:");
-    display(arr, size);
+    float a[] = {0, 2, 5, -1, 5, 2, 33, 12};
+    quickSort(a, 0, 8);
+    for (int i = 0; i < 8; i++)
+    {
+        printf("%.2f ", a[i]);
+    }
+    printf("\n");
     return 0;
 }
